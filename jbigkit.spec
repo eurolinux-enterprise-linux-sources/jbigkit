@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.0
-Release:        11%{?dist}
+Release:        8%{?dist}
 Summary:        JBIG1 lossless image compression tools
 
 Group:          Development/Libraries
@@ -9,7 +9,6 @@ URL:            http://www.cl.cam.ac.uk/~mgk25/jbigkit/
 Source0:        http://www.cl.cam.ac.uk/~mgk25/download/jbigkit-%{version}.tar.gz
 Patch0:         jbigkit-2.0-shlib.patch
 Patch1:         jbigkit-2.0-warnings.patch
-Patch2:         jbigkit-2.0-CVE-2013-6369.patch
 
 %package libs
 Summary:        JBIG1 lossless image compression library
@@ -47,7 +46,6 @@ formats.
 %setup -q -n jbigkit
 %patch0 -p1 -b .shlib
 %patch1 -p1 -b .warnings
-%patch2 -p1 -b .CVE-2013-6369
 
 %build
 make %{?_smp_mflags} CCFLAGS="$RPM_OPT_FLAGS"
@@ -92,15 +90,6 @@ make test
 %{_includedir}/jbig*.h
 
 %changelog
-* Wed Apr 02 2014 Jiri Popelka <jpopelka@redhat.com> - 2.0-11
-- CVE-2013-6369 (#1083412)
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.0-10
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.0-9
-- Mass rebuild 2013-12-27
-
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.0-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
